@@ -1,0 +1,12 @@
+{
+  "name": "WhereToWatch",
+  "displayName": "WhereToWatch",
+  "expo": {
+    "name": "WhereToWatch",
+    "slug": "WhereToWatch",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
