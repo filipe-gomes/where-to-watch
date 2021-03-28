@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   TextInput,
   StyleSheet,
-  Text,
   Platform,
   TouchableWithoutFeedback,
   Button,
@@ -13,26 +12,29 @@ import {
 import axios from "axios";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { ResultsScreen } from "./ResultsScreen";
 import CountryContext from "../contexts/country/country.context";
+import Logo from "../assets/logo/color.svg";
 
 const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
   },
   inner: {
     padding: 24,
     flex: 1,
     justifyContent: "space-around",
-  },
-  header: {
-    fontSize: 24,
-    paddingTop: 40,
-    alignSelf: "center",
   },
   textInput: {
     height: 40,
@@ -41,8 +43,12 @@ const styles = StyleSheet.create({
     marginBottom: 36,
   },
   btnContainer: {
-    backgroundColor: "white",
+    backgroundColor: "#535ed6",
     marginTop: 12,
+    alignItems: "center",
+    borderRadius: 5,
+    width: "50%",
+    alignSelf: "center",
   },
 });
 
@@ -51,10 +57,10 @@ const Main = ({ navigation }) => {
   const getResults = async (country, term) => {
     try {
       const response = await axios.get(
-      `http://192.168.1.150:3030/search?country=${country}&term=${term}`
-    );
-    return response.data;
-    } catch(error) {
+        `http://192.168.1.144:3030/search?country=${country}&term=${term}`
+      );
+      return response.data;
+    } catch (error) {
       console.log("error", error);
     }
   };
@@ -66,11 +72,23 @@ const Main = ({ navigation }) => {
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.container}
         >
+          <LinearGradient
+            // Background Linear Gradient
+            colors={["#ff5f6d", "#ffc371"]}
+            style={styles.background}
+          />
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.inner}>
-              <Text style={styles.header}>
-                Search for a movie or show to find out where it's streaming!
-              </Text>
+              <Logo
+                style={{
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+                fill="black"
+                height={200}
+                width={200}
+              />
               <TextInput
                 placeholder="Ex.: The Terminator"
                 style={styles.textInput}
@@ -80,6 +98,7 @@ const Main = ({ navigation }) => {
               <View style={styles.btnContainer}>
                 <Button
                   title="Find"
+                  color="white"
                   onPress={() =>
                     getResults(country, searchQuery).then((response) => {
                       navigation.navigate("Results", {
@@ -99,9 +118,36 @@ const Main = ({ navigation }) => {
 
 export const MainScreen = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Main">
-      <Stack.Screen options={{headerShown: false}} name="Main" component={Main} />
-      <Stack.Screen name="Results" component={ResultsScreen} />
+    <Stack.Navigator
+      initialRouteName="Main"
+      screenOptions={{
+        headerShown: true,
+      }}
+    >
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Main"
+        component={Main}
+      />
+      <Stack.Screen
+        name="Results"
+        component={ResultsScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: "#ff5f6d",
+            borderColor: "#ff5f6d",
+            shadowRadius: 0,
+            shadowOffset: {
+              height: 0,
+            },
+          },
+          headerTitleStyle: {
+            color: "white",
+          },
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
+        }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );
