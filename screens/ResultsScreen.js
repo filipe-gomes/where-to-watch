@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, Linking } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -27,6 +27,26 @@ const styles = StyleSheet.create({
 });
 
 export const ResultsScreen = (data) => {
+  if (data.route.params.data.status_code !== 200) {
+    return (
+      <>
+        <LinearGradient
+          // Background Linear Gradient
+          colors={["#ff5f6d", "#ffc371"]}
+          style={styles.background}
+        />
+        <Text style={styles.text}>
+          Something went wrong. We apologize for the inconvenience. Please
+          <Text
+            onPress={() => Linking.openURL("mailto:filipegomes404@gmail.com")}
+          >
+            {" "}
+            contact support.
+          </Text>
+        </Text>
+      </>
+    );
+  }
   return (
     <>
       <LinearGradient

@@ -57,7 +57,7 @@ const Main = ({ navigation }) => {
   const getResults = async (country, term) => {
     try {
       const response = await axios.get(
-        `http://192.168.1.144:3030/search?country=${country}&term=${term}`
+        `http://157.245.128.74:3030/search?country=${country}&term=${term}`
       );
       return response.data;
     } catch (error) {
