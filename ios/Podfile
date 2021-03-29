@@ -5,6 +5,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '10.0'
 
 target 'WhereToWatch' do
+  pod 'Google-Mobile-Ads-SDK'
   use_unimodules!
   config = use_native_modules!
 
