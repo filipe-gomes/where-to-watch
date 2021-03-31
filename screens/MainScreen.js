@@ -16,7 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { ResultsScreen } from "./ResultsScreen";
 import CountryContext from "../contexts/country/country.context";
-import Logo from "../assets/logo/color.svg";
+import Logo from "../assets/logo/color-1.svg";
 
 const Stack = createStackNavigator();
 

@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, Linking } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
+import { AdMobBanner } from "expo-ads-admob";
 
 import { ItemDisplay } from "../components/ItemDisplay";
 
@@ -68,6 +69,12 @@ export const ResultsScreen = (data) => {
           <Text style={styles.text}>No results found.</Text>
         )}
       </ScrollView>
+      <AdMobBanner
+        bannerSize="fullBanner"
+        adUnitID="ca-app-pub-9099008543344486/9912292038"
+        servePersonalizedAds={true}
+        onDidFailToReceiveAdWithError={(error) => console.log(error)}
+      />
     </>
   );
 };

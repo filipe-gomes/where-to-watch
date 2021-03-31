@@ -5,8 +5,23 @@
     "name": "WhereToWatch",
     "slug": "WhereToWatch",
     "version": "1.0.0",
+    "icon": "./assets/icon/wtw-icon.png",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.filipecodes.wheretowatch",
+      "versionCode": 1,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-9099008543344486~2762869252"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.filipecodes.wheretowatch",
+      "buildNumber": "1.0.0",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-9099008543344486~2762869252"
+      }
+    }
   }
 }
