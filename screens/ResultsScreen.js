@@ -52,7 +52,7 @@ export const ResultsScreen = (data) => {
     <>
       <LinearGradient
         // Background Linear Gradient
-        colors={["#ff5f6d", "#ffc371"]}
+        colors={["#ff5f6d", "#FF8126"]}
         style={styles.background}
       />
       <ScrollView style={styles.container}>
