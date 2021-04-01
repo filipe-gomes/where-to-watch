@@ -342,8 +342,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.WhereToWatch;
-				PRODUCT_NAME = WhereToWatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.filipecodes.wheretowatch";
+				PRODUCT_NAME = wheretowatch;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -366,8 +366,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.WhereToWatch;
-				PRODUCT_NAME = WhereToWatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.filipecodes.wheretowatch";
+				PRODUCT_NAME = wheretowatch;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
