@@ -23,7 +23,7 @@
     "ios": {
       "icon": "./assets/wtw-icons/Icon.png",
       "bundleIdentifier": "com.filipecodes.wheretowatch",
-      "buildNumber": "1.0.1",
+      "buildNumber": "1.1.0",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-9099008543344486~2762869252"
       }
