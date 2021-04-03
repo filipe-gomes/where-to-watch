@@ -69,12 +69,12 @@ export const ResultsScreen = (data) => {
           <Text style={styles.text}>No results found.</Text>
         )}
       </ScrollView>
-      <AdMobBanner
+      {/* <AdMobBanner
         bannerSize="fullBanner"
         adUnitID="ca-app-pub-9099008543344486/9912292038"
         servePersonalizedAds={true}
         onDidFailToReceiveAdWithError={(error) => console.log(error)}
-      />
+      /> */}
     </>
   );
 };
