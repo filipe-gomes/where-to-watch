@@ -21,6 +21,7 @@
       }
     },
     "ios": {
+      "icon": "./assets/wtw-icon/ios/iTunesArtwork@2x.png",
       "bundleIdentifier": "com.filipecodes.wheretowatch",
       "buildNumber": "1.0.0",
       "config": {
