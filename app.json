@@ -2,10 +2,10 @@
   "name": "WhereToWatch",
   "displayName": "WhereToWatch",
   "expo": {
+    "icon": "./assets/wtw-icon/ios/iTunesArtwork@2x.png",
     "name": "WhereToWatch",
     "slug": "WhereToWatch",
     "version": "1.0.0",
-    "icon": "./assets/wtw-icon/ios/iTunesArtwork@2x.png",
     "splash": {
       "image": "./assets/splash/splash.png",
       "resizeMode": "cover"
