@@ -81,7 +81,7 @@ const Main = ({ navigation }) => {
             <View style={styles.inner}>
               <Logo
                 style={{
-                  display: "block",
+                  display: "flex",
                   marginLeft: "auto",
                   marginRight: "auto",
                 }}

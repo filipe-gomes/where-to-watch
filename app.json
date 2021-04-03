@@ -2,7 +2,7 @@
   "name": "WhereToWatch",
   "displayName": "WhereToWatch",
   "expo": {
-    "icon": "./assets/wtw-icon/ios/iTunesArtwork@2x.png",
+    "icon": "./assets/wtw-icons/Icon.png",
     "name": "WhereToWatch",
     "slug": "WhereToWatch",
     "version": "1.0.0",
@@ -21,7 +21,7 @@
       }
     },
     "ios": {
-      "icon": "./assets/wtw-icon/ios/iTunesArtwork@2x.png",
+      "icon": "./assets/wtw-icons/Icon.png",
       "bundleIdentifier": "com.filipecodes.wheretowatch",
       "buildNumber": "1.0.0",
       "config": {
