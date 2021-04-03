@@ -5,7 +5,7 @@
     "icon": "./assets/wtw-icons/Icon.png",
     "name": "WhereToWatch",
     "slug": "WhereToWatch",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "splash": {
       "image": "./assets/splash/splash.png",
       "resizeMode": "cover"
