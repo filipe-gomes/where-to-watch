@@ -15,7 +15,7 @@
     ],
     "android": {
       "package": "com.filipecodes.wheretowatch",
-      "versionCode": 1,
+      "versionCode": 1.1,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-9099008543344486~2762869252"
       }
