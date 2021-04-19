@@ -9,7 +9,6 @@ import {
   Button,
   Keyboard,
 } from "react-native";
-import axios from "axios";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { LinearGradient } from "expo-linear-gradient";
@@ -55,16 +54,6 @@ const styles = StyleSheet.create({
 
 const Main = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState(null);
-  const getResults = async (country, term) => {
-    try {
-      const response = await axios.get(
-        `http://157.245.128.74:3030/search?country=${country}&term=${term}`
-      );
-      return response.data;
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
 
   return (
     <CountryContext.Consumer>
@@ -95,16 +84,16 @@ const Main = ({ navigation }) => {
                 style={styles.textInput}
                 onChangeText={(text) => setSearchQuery(text)}
                 value={searchQuery}
+                clearButtonMode="while-editing"
               />
               <View style={styles.btnContainer}>
                 <Button
                   title="Find"
                   color="white"
                   onPress={() =>
-                    getResults(country, searchQuery).then((response) => {
-                      navigation.navigate("Results", {
-                        data: response,
-                      });
+                    navigation.navigate("Results", {
+                      searchQuery: searchQuery,
+                      country: country,
                     })
                   }
                 />
@@ -145,7 +134,7 @@ export const MainScreen = () => (
           headerTitleStyle: {
             color: "white",
           },
-          headerTintColor: 'white',
+          headerTintColor: "white",
           headerBackTitleVisible: false,
         }}
       />

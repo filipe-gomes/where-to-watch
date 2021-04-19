@@ -34,12 +34,16 @@
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.0",
+    "react-native-shimmer": "^0.6.0",
+    "react-native-skeleton-content": "^1.0.20",
+    "react-native-skeleton-placeholder": "^3.0.4",
     "react-native-svg": "^12.1.0",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-unimodules": "~0.12.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
-    "react-navigation": "^4.4.3"
+    "react-navigation": "^4.4.3",
+    "react-query": "^3.13.10"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

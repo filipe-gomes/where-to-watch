@@ -1,8 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, Linking } from "react-native";
+import axios from "axios";
+import { StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import { AdMobBanner } from "expo-ads-admob";
+import { useQuery } from "react-query";
 
 import { ItemDisplay } from "../components/ItemDisplay";
 
@@ -27,54 +29,81 @@ const styles = StyleSheet.create({
   },
 });
 
-export const ResultsScreen = (data) => {
-  if (data.route.params.data.status_code !== 200) {
-    return (
-      <>
-        <LinearGradient
-          // Background Linear Gradient
-          colors={["#ff5f6d", "#ffc371"]}
-          style={styles.background}
-        />
-        <Text style={styles.text}>
-          Something went wrong. We apologize for the inconvenience. Please
-          <Text
-            onPress={() => Linking.openURL("mailto:filipegomes404@gmail.com")}
-          >
-            {" "}
-            contact support.
-          </Text>
-        </Text>
-      </>
-    );
-  }
+export const ResultsScreen = ({ route, navigation }) => {
+  const { searchQuery, country } = route.params;
+  const getResults = async (location, term) => {
+    try {
+      const response = await axios.get(
+        `http://157.245.128.74:3030/search?country=${location}&term=${term}`
+      );
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+
+  const { data, status, isLoading } = useQuery("results", async () =>
+    getResults(country, searchQuery)
+  );
+
+  // TODO: Add error handling
+  //      <>
+  //         <LinearGradient
+  //           // Background Linear Gradient
+  //           colors={["#ff5f6d", "#ffc371"]}
+  //           style={styles.background}
+  //         />
+  //         <Text style={styles.text}>
+  //           Something went wrong. We apologize for the inconvenience. Please
+  //           <Text
+  //             onPress={() => Linking.openURL("mailto:filipegomes404@gmail.com")}
+  //           >
+  //             {" "}
+  //             contact support.
+  //           </Text>
+  //         </Text>
+  //       </>
+
   return (
     <>
-      <LinearGradient
-        // Background Linear Gradient
-        colors={["#ff5f6d", "#FF8126"]}
-        style={styles.background}
-      />
-      <ScrollView style={styles.container}>
-        {data.route.params.data.results.length > 0 ? (
-          data.route.params.data.results.map((item) => (
-            <ItemDisplay
-              key={item.id}
-              picture={item.picture}
-              name={item.name}
-              locations={item.locations}
-            />
-          ))
-        ) : (
-          <Text style={styles.text}>No results found.</Text>
-        )}
-      </ScrollView>
-      {/* <AdMobBanner
-        bannerSize="fullBanner"
-        adUnitID="ca-app-pub-9099008543344486/9912292038"
-        servePersonalizedAds={true}
-        onDidFailToReceiveAdWithError={(error) => console.log(error)}
-      /> */}
+      {isLoading ? (
+        <>
+          <LinearGradient
+            // Background Linear Gradient
+            colors={["#ff5f6d", "#FF8126"]}
+            style={styles.background}
+          />
+          <Text style={styles.text}>Searching...</Text>
+        </>
+      ) : (
+        <>
+          <LinearGradient
+            // Background Linear Gradient
+            colors={["#ff5f6d", "#FF8126"]}
+            style={styles.background}
+          />
+          <ScrollView style={styles.container}>
+            {data?.results.length > 0 ? (
+              data?.results.map((item) => (
+                <ItemDisplay
+                  key={item.id}
+                  picture={item.picture}
+                  name={item.name}
+                  locations={item.locations}
+                />
+              ))
+            ) : (
+              <Text style={styles.text}>No results found.</Text>
+            )}
+          </ScrollView>
+          {/* <AdMobBanner
+              bannerSize="fullBanner"
+              adUnitID="ca-app-pub-9099008543344486/9912292038"
+              servePersonalizedAds={true}
+              onDidFailToReceiveAdWithError={(error) => console.log(error)}
+            /> */}
+        </>
+      )}
     </>
   );
 };
