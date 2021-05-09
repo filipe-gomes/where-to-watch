@@ -4,7 +4,7 @@ import { StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import { AdMobBanner } from "expo-ads-admob";
-import { useQuery } from "react-query";
+import { useQuery, useIsFetching } from "react-query";
 
 import { ItemDisplay } from "../components/ItemDisplay";
 
@@ -42,7 +42,9 @@ export const ResultsScreen = ({ route, navigation }) => {
     }
   };
 
-  const { data, status, isLoading } = useQuery("results", async () =>
+  const isFetching = useIsFetching();
+
+  const { data, status } = useQuery("results", async () =>
     getResults(country, searchQuery)
   );
 
@@ -66,7 +68,7 @@ export const ResultsScreen = ({ route, navigation }) => {
 
   return (
     <>
-      {isLoading ? (
+      {isFetching ? (
         <>
           <LinearGradient
             // Background Linear Gradient

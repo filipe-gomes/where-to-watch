@@ -84,7 +84,7 @@ const Main = ({ navigation }) => {
                 style={styles.textInput}
                 onChangeText={(text) => setSearchQuery(text)}
                 value={searchQuery}
-                clearButtonMode="while-editing"
+                clearButtonMode="always"
               />
               <View style={styles.btnContainer}>
                 <Button
