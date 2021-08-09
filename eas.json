@@ -1,9 +1,5 @@
 {
-  "builds": {
-    "ios": {
-      "release": {
-        "workflow": "generic"
-      }
-    }
+  "build": {
+    "release": {}
   }
 }
